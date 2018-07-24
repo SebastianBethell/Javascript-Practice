@@ -1,13 +1,12 @@
-const myArgs = process.argv.slice(2);
-let strOut = "";
+var originalWords = process.argv.slice(2);
+var pigLatinWords = [];
 
-//Convert a word to pig latin by taking its first letter, moving it to the end of the word, then adding "ay" after it all.
-
-for (let i = 0; i < myArgs.length; i++) {
-  let firstLetter = myArgs[i].substring(0,1);
-  let newWord = myArgs[i].substring(1);
-
-  strOut += " " + newWord + firstLetter + "ay";
+for (var i = 1; i < originalWords.length; i++) {
+  pigLatinWords.push(translateToPigLatin(originalWords[i]));
 }
 
-console.log(strOut);
+console.log(pigLatinWords.join(' '));
+
+function translateToPigLatin(word) {
+  return word.slice(2, word.length) + word[0] + "ay";
+}
